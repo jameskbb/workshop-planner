@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+
+/*
+ * Design tokens. Chrome is a neutral dark graphite; the plan is a light drafting sheet.
+ * Use the semantic names (bg-panel, text-ink-muted, border-line, …); never raw hex in components.
+ * Canvas colors used by Konva live in src/styles/tokens.ts (same values).
+ */
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-app: #131517;
+  --color-panel: #1a1d20;
+  --color-panel-2: #212529;
+  --color-panel-3: #2a2f34;
+  --color-line: #2c3136;
+  --color-line-strong: #3a4046;
+  --color-ink: #e7e9eb;
+  --color-ink-muted: #a1a8b0;
+  --color-ink-faint: #6d757e;
+
+  --color-accent: #f08a24;
+  --color-accent-strong: #ff9d3d;
+  --color-accent-ink: #1b1206;
+  --color-select: #3b82f6;
+  --color-warn: #f2b233;
+  --color-danger: #ef5b5f;
+  --color-ok: #45b97c;
+  --color-info: #5aa9e6;
+
+  --color-paper: #f3f2ee;
+  --color-paper-ink: #22262a;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+
+  --animate-fade-in: fade-in 120ms ease-out;
+  --animate-pop-in: pop-in 140ms cubic-bezier(0.2, 0.9, 0.3, 1.1);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-app text-ink font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    font-size: 13px;
+    overflow: hidden;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-select) 45%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-select);
+    outline-offset: 1px;
+  }
+  button {
+    cursor: default;
+  }
+  input[type='number']::-webkit-inner-spin-button {
+    display: none;
+  }
+}
+
+@layer components {
+  .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-strong) transparent;
+  }
+  .panel-heading {
+    @apply text-2xs font-semibold tracking-[0.08em] text-ink-faint uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

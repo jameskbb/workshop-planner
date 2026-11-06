@@ -1,0 +1,12 @@
+# Keeps the SHA-pinned actions in .github/workflows current: Dependabot
+# rewrites both the commit SHA and the trailing version comment.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns:
+          - "*"

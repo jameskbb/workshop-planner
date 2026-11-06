@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Every repository check except the slow repo tests (scripts/check.sh --fast).
+# Enable once per clone:  git config core.hooksPath .githooks
+# Skip once:              SKIP_REPO_HOOKS=1 git push ...   (or git push --no-verify)
+if [ "${SKIP_REPO_HOOKS:-0}" = 1 ]; then
+  echo "pre-push: skipped (SKIP_REPO_HOOKS=1)"
+  exit 0
+fi
+exec bash "$(git rev-parse --show-toplevel)/scripts/check.sh" --fast < /dev/null

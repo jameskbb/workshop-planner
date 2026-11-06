@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Fast em dash, tracked-path and public-safety scan of the staged changes.
+# Enable once per clone:  git config core.hooksPath .githooks
+# Skip once:              SKIP_REPO_HOOKS=1 git commit ...   (or git commit --no-verify)
+if [ "${SKIP_REPO_HOOKS:-0}" = 1 ]; then
+  echo "pre-commit: skipped (SKIP_REPO_HOOKS=1)"
+  exit 0
+fi
+exec bash "$(git rev-parse --show-toplevel)/scripts/check.sh" --staged

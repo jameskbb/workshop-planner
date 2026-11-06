@@ -1,0 +1,5 @@
+# Words and phrases that must never appear in a tracked file of this repository:
+# one per line, matched case-insensitively as whole words by scripts/check.sh.
+# This list is tracked, so it is public if the repository is. Put words you would
+# rather not publish even here (employer, family or host names) in the untracked
+# scripts/blocklist.local.txt, which the check reads too.

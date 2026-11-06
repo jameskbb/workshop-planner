@@ -1,0 +1,33 @@
+node_modules
+dist
+dist-ssr
+coverage
+*.local
+.vite
+test-results
+playwright-report
+blob-report
+.DS_Store
+*.tsbuildinfo
+
+# Environment, agent and GSD state
+.env*
+!.env.example
+.claude/settings.local.json
+.claude/worktrees/
+.planning/
+.gsd/
+
+# Secrets and key material never belong in git, even in a private repository.
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+credentials*.json
+# Public-safety words too private to publish even in a list (read by scripts/check.sh).
+scripts/blocklist.local.txt
+Thumbs.db
+
+# Maintainer-local image tooling (kept out of the repository).
+docs/src/
+scripts/screenshots.ts
